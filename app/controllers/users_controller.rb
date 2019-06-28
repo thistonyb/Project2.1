@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
 
     get '/signup' do
-      if Helpers.is_signed_in?(session)
-        redirect to '/welcome'
-      else
-        erb :'/users/create_user'
-      end
+        if Helpers.is_signed_in?(session)
+            redirect to '/welcome'
+        else
+            erb :'/users/create_user'
+        end
     end
     
     post '/signup' do 
@@ -31,6 +31,14 @@ class UsersController < ApplicationController
         if user && user.authenticate(params[:password])
             session["user_id"] = user.id
             redirect to '/welcome'
+        else
+            redirect to '/signin'
+        end
+    end
+
+    get '/welcome' do
+        if Helpers.is_signed_in?(session)
+            erb :'/users/welcome'
         else
             redirect to '/signin'
         end
