@@ -26,6 +26,14 @@ class UsersController < ApplicationController
         end
     end
 
-    
+    post '/signin' do
+        user = User.find_by(username: params[:username])
+        if user && user.authenticate(params[:password])
+            session["user_id"] = user.id
+            redirect to '/welcome'
+        else
+            redirect to '/signin'
+        end
+    end
     
 end
