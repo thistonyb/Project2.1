@@ -1,0 +1,14 @@
+<h1>Welcome, <%= Helper.current_user(session).username%>!</h1>
+<br>
+<br>
+<h3><a href="/welcome">Back to homepage.</a></h3>
+<br>
+<br>
+<h2>Here are all the minerals found by you!</h2>
+<hr>
+<% @rocks.each do |rock|%>
+    <h3>Name: <%= rock.name %> </h3>
+    <h3>Description: <%= rock.description %> </h3>
+    <h3>Location: <%= rock.location %> </h3>
+    <h4><a href="/rocks/:id">Edit or delete this specimen.</a></h4>
+<hr>

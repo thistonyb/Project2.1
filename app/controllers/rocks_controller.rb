@@ -42,6 +42,17 @@ class RocksController < ApplicationController
         end
     end
 
+    get '/rocks/:id'
+        if Helper.is_signed_in?(session)
+            @rock = Rock.find_by_id(params[:id])
+            erb :'/rocks/edit_or_delete'
+        else
+            redirect to '/signin'
+        end
+    end
+
+
+
 
     
 
