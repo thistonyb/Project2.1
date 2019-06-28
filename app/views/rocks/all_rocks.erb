@@ -3,4 +3,10 @@
 </br>
 <h2>Here are all the minerals found by RockHound members!</h2>
 <hr>
-<% @rocks.each do |rock|>
+<% @rocks.each do |rock|%>
+    <h3> <%= rock.user.username %> : </h3>
+    <h4>Name: <%= rock.name %> </h4>
+    <h4>Description: <%= rock.description %> </h4>
+    <h4>Location: <%= rock.location %> </h4>
+<hr>
+<%end%>
