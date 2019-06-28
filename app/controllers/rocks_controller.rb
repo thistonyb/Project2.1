@@ -18,6 +18,19 @@ class RocksController < ApplicationController
         end
     end
 
+    post 'rocks/new' do
+        user = Helpers.current_user(session)
+        if user.nil?
+            redirect to '/signin'
+        elsif params[:rock][:name].empty? || params[:rock][:description].empty? || params[:rock][:location].empty?
+            redirect to '/rocks/new'
+        else
+            user.rocks.new({name: params[:rock][:name], description: params[:rock][:description], location: params[:rock][:location]})
+            user.save
+        end
+        redirect to '/rocks/:id'
+    end
+
 
     
 
