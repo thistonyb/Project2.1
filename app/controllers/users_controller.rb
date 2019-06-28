@@ -6,6 +6,16 @@ class UsersController < ApplicationController
       else
         erb :'users/create_user'
       end
-    end  
+    end
+    
+    post '/signup' do 
+        if !(params.has_value(""))
+            user = User.create(params)
+            session["user_id"] = user.id
+            redirect to '/rocks'
+        else
+            redirect to '/signup'
+        end
+    end
     
 end
