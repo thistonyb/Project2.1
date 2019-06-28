@@ -17,5 +17,15 @@ class UsersController < ApplicationController
             redirect to '/signup'
         end
     end
+
+    get '/signin' do
+        if Helpers.is_signed_in?(session)
+            redirect to '/welcome'
+        else
+            erb :'/users/signin'
+        end
+    end
+
+    
     
 end
