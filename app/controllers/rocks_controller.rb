@@ -33,7 +33,13 @@ class RocksController < ApplicationController
     end
 
     get '/rocks/show' do
-
+        user = Helpers.current_user(session)
+        if user.nil?
+            redirect to '/signin'
+        else
+            @rocks = user.rocks.all
+            erb :'/rocks/show_rocks'
+        end
     end
 
 
