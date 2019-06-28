@@ -4,11 +4,14 @@
 <h3><a href="/welcome">Back to homepage.</a></h3>
 <br>
 <br>
-<h2>Here are all the minerals found by you!</h2>
+<h2>Here are all the minerals submitted by you:</h2>
 <hr>
+<%counter = 1%>
 <% @rocks.each do |rock|%>
+<h2><%counter%>.</h2>
     <h3>Name: <%= rock.name %> </h3>
     <h3>Description: <%= rock.description %> </h3>
     <h3>Location: <%= rock.location %> </h3>
     <h4><a href="/rocks/:id">Edit or delete this specimen.</a></h4>
+    <%counter += 1%>
 <hr>
