@@ -1,3 +1,4 @@
+require 'pry'
 class UsersController < ApplicationController
 
     get '/signup' do
@@ -9,7 +10,7 @@ class UsersController < ApplicationController
     end
     
     post '/signup' do 
-        if !(params.has_value(""))
+        if !(params.has_value?(""))
             user = User.create(params)
             session["user_id"] = user.id
             redirect to '/welcome'
@@ -27,9 +28,10 @@ class UsersController < ApplicationController
     end
 
     post '/signin' do
+        binding.pry
         user = User.find_by(username: params[:username])
         if user && user.authenticate(params[:password])
-            session["user_id"] = user.id
+            session[:user_id] = user.id
             redirect to '/welcome'
         else
             redirect to '/signin'

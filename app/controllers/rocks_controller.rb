@@ -42,7 +42,7 @@ class RocksController < ApplicationController
         end
     end
 
-    get '/rocks/:id'
+    get '/rocks/:id' do
         if Helper.is_signed_in?(session)
             @rock = Rock.find_by_id(params[:id])
             erb :'/rocks/edit_or_delete'
@@ -51,7 +51,7 @@ class RocksController < ApplicationController
         end
     end
 
-    get '/rocks/:id/edit'
+    get '/rocks/:id/edit' do
         if !Helper.is_signed_in?(session)
             redirect to '/signin'
         end
@@ -76,7 +76,7 @@ class RocksController < ApplicationController
         redirect to '/rocks/show'
     end
 
-    delete '/rocks/:id/delete'
+    delete '/rocks/:id/delete' do
         if !Helpers.is_signed_in?(session)
             redirect to '/signin'
         end
