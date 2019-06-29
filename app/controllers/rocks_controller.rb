@@ -63,6 +63,21 @@ class RocksController < ApplicationController
         end
     end
 
+    patch '/rocks/:id' do
+        if !Helper.is_signed_in?(session)
+            redirect to '/signin'
+        end
+        @rock = Rock.find_by_id(params[:id])
+        if params[:rock][:name].empty? || params[:rock][:description].empty? || params[:rock][:location].empty?
+            redirect to "/rocks/#{@rock.id}/edit"
+        end
+        @rock.update(params[:rock])
+        @rock.save
+        redirect to '/rocks/show'
+    end
+
+    
+
 
 
 
