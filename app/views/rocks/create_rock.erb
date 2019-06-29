@@ -1,7 +1,7 @@
-<h1>Welcome, <%= Helper.current_user(session).username%>!</h1>
+<h1>Welcome, <%= Helpers.current_user(session).username%>!</h1>
 <br>
 <br>
-<h2>Submit a new specimin.</h2>
+<h2>Submit a new specimen.</h2>
     <form action="/rocks/new" method="post">
         <label for="name">Name:</label>
         <input type="text" name="rock[name]" id="name">
@@ -13,6 +13,8 @@
         <br>
         <input type="submit" name="submit" value="submit" id="submit">
     </form>
+<br>
+<br>
 <h4>Note: You must fill out all fields in order to submit a new specimen.</h4>
 <br>
 <br>

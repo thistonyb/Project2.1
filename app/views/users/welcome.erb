@@ -1,6 +1,6 @@
 <div class="container">
   <div class="col-md-8 col-md-offset-2">
-    <h1>Welcome, <%= Helper.current_user(session).username%>!</h1>
+    <h1>Welcome, <%= Helpers.current_user(session).username%>!</h1>
 
 
     <div class="content">
@@ -16,7 +16,7 @@
 
     <form action="/signout" method="post">
     <h2>Good luck on your adventures RockHound!</h2>
-    <input type="submit", name="logout">
+    <input type="submit", name="logout" value="Sign Out">
     </form>
 
 
