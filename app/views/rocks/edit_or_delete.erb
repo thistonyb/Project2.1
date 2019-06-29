@@ -1,0 +1,16 @@
+<h1>This is the specimen you chose:</h1>
+
+<h3>Name: <%= @rock.name %> </h3>
+<h3>Description: <%= @rock.description %> </h3>
+<h3>Location: <%= @rock.location %> </h3>
+
+<form action="/rocks/<%= @rock.id %>/edit" method="get">
+    <input type="submit" value="Edit Specimen">
+</form>
+
+<form action="/rocks/<%= @rock.id %>/delete" method="post">
+    <input id="hidden" type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete Specimen">
+</form>
+
+<h3><a href="/welcome">Back to homepage.</a></h3>
