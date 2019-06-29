@@ -86,12 +86,4 @@ class RocksController < ApplicationController
             redirect to '/rocks/show'
         end
     end
-
-
-
-
-    
-
-
-
 end
