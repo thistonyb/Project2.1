@@ -44,4 +44,12 @@ class UsersController < ApplicationController
         end
     end
     
+    post '/signout' do
+        if Helpers.is_signed_in?(session)
+            session.clear
+            redirect to '/signin'
+        else
+            redirect to '/'
+        end
+    end
 end
