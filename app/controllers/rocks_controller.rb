@@ -76,7 +76,16 @@ class RocksController < ApplicationController
         redirect to '/rocks/show'
     end
 
-    
+    delete '/rocks/:id/delete'
+        if !Helpers.is_signed_in?(session)
+            redirect to '/signin'
+        end
+        @rock = Rock.find_by_id(params[:id])
+        if @rock.user == Helpers.current_user(session)
+            @rock.delete
+            redirect to '/rocks/show'
+        end
+    end
 
 
 
