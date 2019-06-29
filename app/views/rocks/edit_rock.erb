@@ -1,0 +1,21 @@
+<h1>Edit your specimen.</h1>
+
+<form action="/rocks/<%= @rock.id %>" method="post">
+    <input id="hidden" type="hidden" name="_method" value="patch">
+
+    <label>Current Name: "<%= @rock.name %>"</label>
+    <br><br>
+    <input type="text" name="rock[name]" id="name">
+    <br><br>
+    <label>Current Description: "<%@rock.description%>"</label>
+    <br><br>
+    <textarea type="text" name="rock[description]" id="description" rows="5" cols="30"></textarea>
+    <br><br>
+    <label>Current Location: "<%@rock.location%>"</label>
+    <br><br>
+    <input type="text" name="rock[location]" id="location">
+    <br><br>
+    <input type="submit" value="submit" id="submit">
+</form>
+
+
