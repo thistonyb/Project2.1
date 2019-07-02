@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
     get '/signup' do
         if Helpers.is_signed_in?(session)
-            redirect to '/welcome'
+            redirect to '/home'
         else
             erb :'/users/create_user'
         end
@@ -13,7 +13,7 @@ class UsersController < ApplicationController
         if !(params.has_value?(""))
             user = User.create(params)
             session["user_id"] = user.id
-            redirect to '/welcome'
+            redirect to '/home'
         else
             redirect to '/signup'
         end
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
     get '/signin' do
         if Helpers.is_signed_in?(session)
-            redirect to '/welcome'
+            redirect to '/home'
         else
             erb :'/users/signin'
         end
@@ -31,15 +31,15 @@ class UsersController < ApplicationController
         user = User.find_by(username: params[:username])
         if user && user.authenticate(params[:password])
             session[:user_id] = user.id
-            redirect to '/welcome'
+            redirect to '/home'
         else
             redirect to '/signin'
         end
     end
 
-    get '/welcome' do
+    get '/home' do
         if Helpers.is_signed_in?(session)
-            erb :'/users/welcome'
+            erb :'/users/home'
         else
             redirect to '/signin'
         end

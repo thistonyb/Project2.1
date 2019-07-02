@@ -1,12 +1,12 @@
 class RocksController < ApplicationController
     
-    get '/rocks/all' do
+    get '/rocks/index' do
         user = Helpers.current_user(session)
         if user.nil?
             redirect to '/signin'    
         else
             @rocks = Rock.all
-            erb :'/rocks/all_rocks'
+            erb :'/rocks/index'
         end
     end
 
